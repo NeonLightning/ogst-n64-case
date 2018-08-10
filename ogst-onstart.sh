@@ -4,7 +4,7 @@ if [[ $(< /sys/class/graphics/fb1/name) == "fb_ili9340" ]]; then
         exit
     fi
     rom_path=$3
-    system_path="/home/pi/RetroPie/roms/$1"
+    system_path="/home/pigaming/RetroPie/roms/$1"
     media_path="$system_path/media/screen${rom_path:${#system_path}:${#rom_path}}"
     media_path="${media_path%.*}.png"
 
@@ -13,9 +13,9 @@ if [[ $(< /sys/class/graphics/fb1/name) == "fb_ili9340" ]]; then
         exit
     fi
     if [ -e "~/screen/system-$1.png" ]; then
-        mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 "~/screen/system-$1.png" &> /dev/null
+        mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 "/opt/retropie/supplementary/ogst-n64-case/screen/system-$1.png" &> /dev/null
         exit
     fi
 
-    mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 "~/screen/logo-black.png" &> /dev/null
+    mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 "/opt/retropie/supplementary/ogst-n64-case/screen/logo.png" &> /dev/null
 fi
