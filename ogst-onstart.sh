@@ -12,7 +12,7 @@ if [[ $(< /sys/class/graphics/fb1/name) == "fb_ili9340" ]]; then
         mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 "$media_path" &> /dev/null
         exit
     fi
-    if [ -e "~/screen/system-$1.png" ]; then
+    if [ -e "/opt/retropie/supplementary/ogst-n64-case/screen/system-$1.png" ]; then
         mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 "/opt/retropie/supplementary/ogst-n64-case/screen/system-$1.png" &> /dev/null
         exit
     fi
