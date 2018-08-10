@@ -13,7 +13,11 @@ if [ -a /home/pigaming/scripts/bgm/start.sc ];  then
 fi
 
 if [[ $(< /sys/class/graphics/fb0/name) != "fb_ili9340" ]]; then
-    emulationstation #auto
+	if [[ $(< /sys/class/graphics/fb1/name) == "fb_ili9340" ]]; then
+		mplayer -vo fbdev2:/dev/fb1 -vf scale=320:240 /opt/retropie/supplementary/ogst-n64-case/screen/logo.png &> /dev/null
+	fi
+	
+	emulationstation #auto
 elif [[ $(< /sys/class/graphics/fb0/name) == "fb_ili9340" ]]; then
-    sudo fbi -T 1 -d /dev/fb0 -t 5 -noverbose -a /opt/retropie/supplementary/ogst-n64-case/screen/no-hdmi.png
+    sudo fbi -T 1 -d /dev/fb0 -noverbose -a /opt/retropie/supplementary/ogst-n64-case/screen/no-hdmi.png
 fi
